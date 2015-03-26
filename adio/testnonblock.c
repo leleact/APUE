@@ -3,8 +3,8 @@
 #include <stdlib.h> // for exit
 #include <fcntl.h> // for fcntl
 #include <errno.h> // for errno
-void set_fl(int fd, int flags);
-void clr_fl(int fd, int flags);
+void set_fl(int, int);
+void clr_fl(int, int);
 
 char buf[500000];
 int main() {
