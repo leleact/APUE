@@ -56,6 +56,6 @@ void clr_fl(int fd, int flags) {
 
 	if(fcntl(fd, F_SETFL, val) < 0) {
 		printf("fcntl F_SETFL error\n");	
-			exit(1);
+		exit(1);
 	}
 }
