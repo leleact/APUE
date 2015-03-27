@@ -7,7 +7,12 @@ int fcntl(int filedes, int cmd, .../* struct flock *flockptr */);
 ```
 返回值：成功则依赖于cmd, 出错则返回-1
 
-
+cmd:
+1. 复制一个现有的描述符(cmd = F\_DUPFD)
+2. 获得/设置文件描述符标记(cmd = F\_GETFD或F\_SETFD)
+3. 获得/设置文件状态标识(cmd = F\_GETFL或F\_SETFL)
+4. 获得/设置异步I/O所有权(cmd = F\_GETOWN或F\_SETOWN)
+5. 获得/设置记录锁(cmd = F\_GETLK、F\_SETLK或F\_SETLKW)
 
 ``` c
 struct flock {
