@@ -10,7 +10,7 @@ int fcntl(int filedes, int cmd, .../* struct flock *flockptr */);
 cmd:
 
 1. 复制一个现有的描述符(`cmd = F_DUPFD`)
-2. 获得/设置文件描述符标记(`cmd = F_GETFD或F\_SETFD`)
+2. 获得/设置文件描述符标记(`cmd = F_GETFD或F_SETFD`)
 3. 获得/设置文件状态标识(`cmd = F_GETFL或F_SETFL`)
 4. 获得/设置异步I/O所有权(`cmd = F_GETOWN或F_SETOWN`)
 5. 获得/设置记录锁(`cmd = F_GETLK、F_SETLK或F_SETLKW`)
