@@ -1,8 +1,16 @@
+/**
+ * @file testnonblock.c
+ * @brief 测试非阻塞I/O
+ * @date 2015-03-26
+ * @auther VACP
+ * @from APUE
+ */
 #include <stdio.h>
-#include <unistd.h> // for STDIN_FILENO
-#include <stdlib.h> // for exit
-#include <fcntl.h> // for fcntl
-#include <errno.h> // for errno
+#include <unistd.h>						// for STDIN_FILENO
+#include <stdlib.h>						// for exit
+#include <fcntl.h>						// for fcntl
+#include <errno.h>						// for errno
+
 void set_fl(int, int);
 void clr_fl(int, int);
 
