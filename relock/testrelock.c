@@ -16,4 +16,9 @@ int main() {
 
 	memset(buff, 0x00, sizeof(buff));
 
+	while(read(fd, buff, sizeof(buff)) > 0) {
+		fprintf(stdout, "%s", buff);
+	}
+
+	exit(0);
 }
