@@ -19,6 +19,10 @@ int main() {
 	while(read(fd, buff, sizeof(buff)) > 0) {
 		fprintf(stdout, "%s", buff);
 	}
+	
+	struct flock sFlock;
+	memset(&sFlock, 0x00, sizeof(struct flock));
+	sFlock.l_type = F_WRLCK;
 
 	exit(0);
 }
