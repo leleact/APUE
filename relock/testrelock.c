@@ -16,13 +16,23 @@ int main() {
 
 	memset(buff, 0x00, sizeof(buff));
 
-	while(read(fd, buff, sizeof(buff)) > 0) {
+	while(read(fd, buff, sizeof(buff) - 1) > 0) {
 		fprintf(stdout, "%s", buff);
 	}
 	
 	struct flock sFlock;
 	memset(&sFlock, 0x00, sizeof(struct flock));
 	sFlock.l_type = F_WRLCK;
+	sFlock.l_start = 10;
+	sFlock.l_whence = SEEK_SET;
+	sFlock.l_len = 10;
+
+	if (-1 == fcntl(fd, F_SETLKW, &sFlock)) {
+		fprintf(stderr, "fcntl err!\n");	
+		exit(-1);
+	}
+
+	sleep(100);
 
 	exit(0);
 }
