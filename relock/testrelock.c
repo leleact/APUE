@@ -21,32 +21,27 @@ int lock_reg(int, int, int, off_t, int, off_t);
 
 int main() {
 	int fd;
-	char buff[4096 + 1];
 
 	if ((fd = open(FILENAME, O_RDWR)) < 0) {
 		printf("%s is not exist!\n", FILENAME);	
 		exit(1);
 	}
 
-	memset(buff, 0x00, sizeof(buff));
-
-	while(read(fd, buff, sizeof(buff) - 1) > 0) {
-		fprintf(stdout, "%s", buff);
-	}
-	
-	struct flock sFlock;
-	memset(&sFlock, 0x00, sizeof(struct flock));
-	sFlock.l_type = F_WRLCK;
-	sFlock.l_start = 0;
-	sFlock.l_whence = SEEK_SET;
-	sFlock.l_len = 0;
-
-	if (-1 == fcntl(fd, F_SETLKW, &sFlock)) {
-		fprintf(stderr, "fcntl err!\n");	
-		exit(-1);
-	}
+	write_lock(fd, 0, SEEK_SET, 0);
 
 	sleep(100);
 
 	exit(0);
+}
+
+int lock_reg(int fd, int cmd, int type, off_t offset, int whence, off_t len) {
+
+	struct flock lock;
+	memset(&lock, 0x00, sizeof(struct flock));
+	lock.l_type = type;
+	lock.l_start = offset;
+	lock.l_whence = whence;
+	lock.l_len = len;
+
+	return (fcntl(fd, cmd, &lock));
 }
