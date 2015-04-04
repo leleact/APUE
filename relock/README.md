@@ -24,3 +24,6 @@ struct flock {
 	pid_t l_pid;	/* returned with F_GETLK */
 };
 ```
+
+#测试
+先用testrelock.c锁住一个文件, 然后用testrelock\_again.c再一次试图加锁
