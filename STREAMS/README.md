@@ -7,13 +7,13 @@ getpmsg putmsg putpmsg交换消息。在流首和、各处理模块和设备驱�
 选择的数据。表14-4列出了对应于write、putmsg和putpmsg的不同参数所产生的不同消息类
 型。控制信息和数据由strbuf结构指定：
 	
-	``` c
+``` c
 	struct strbuf {
 		int maxlen;			/* size of buffer */	
 		int len;			/* number of bytes currently in buffer */
 		char *buf;			/* pointer to buffer */
 	}
-	```
+```
 
 	当用putmsg或putpmsg发送消息时，len指定缓冲区中数据的字节数。当用getmsg或getpmsg
 接收消息时，maxlen指定缓冲区长度（使内核不会溢出缓冲区）, 而len则由内核设置为存放在
