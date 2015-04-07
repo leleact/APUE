@@ -1,6 +1,6 @@
 #STREAMS
 
-	STREAMS的所有输入和输出都基于消息。流首和用户进程使用read write ioctl getmsg 
+	STREAMS的所有输入和输出都基于消息。流首和用户进程使用read write ioctl getmsg
 getpmsg putmsg putpmsg交换消息。在流首和、各处理模块和设备驱动程序之间, 消息
 可以顺流而下, 也可以逆流而上。
 	在用户进程和流首之间, 消息由下列机部分组成：消息类型、可选择的控制信息以及可
