@@ -3,6 +3,7 @@
 #include <signal.h>
 int main() {
 	alarm(10);
-	sleep(11);
+//	for (;;);
+	pause();
 	return 0;
 }
