@@ -2,10 +2,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#define MAXLINE 4096
+
 int main() {
 	int n, fd[2];
 	pid_t pid;
-	char line[4096];
+	char line[MAXLINE];
 
 	if (pipe(fd) < 0) {
 		fprintf(stderr, "pipe error!\n");
@@ -24,7 +26,7 @@ int main() {
 	else {
 	/* child */
 		close(fd[1]); /* 关闭子进程写入管道 */
-		n = read(fd[0], line, 4096); /* 从管道中读取数据 */
+		n = read(fd[0], line, MAXLINE); /* 从管道中读取数据 */
 		write(STDOUT_FILENO, line, n);
 	}
 
