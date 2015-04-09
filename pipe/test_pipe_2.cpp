@@ -18,12 +18,12 @@ int main(int argc, char *argv[]) {
 	FILE *fp;
 
 	if (argc != 2) {
-		fprintf(stderr, "usage: a.out <pathname>\n");	
+		fprintf(stderr, "usage: a.out <pathname>\n");
 		exit(1);
 	}
 
 	if ((fp = fopen(argv[1], "r")) == NULL) {
-		fprintf(stderr, "can't open %s\n", argv[1]);	
+		fprintf(stderr, "can't open %s\n", argv[1]);
 		exit(1);
 	}
 
@@ -33,10 +33,10 @@ int main(int argc, char *argv[]) {
 	}
 
 	if ((pid = fork()) < 0) {
-		fprintf(stderr, "fork error\n");	
+		fprintf(stderr, "fork error\n");
 		exit(1);
 	} else if (pid > 0) {
-	/* parent */	
+		/* parent */
 		close(fd[0]); /* close read end */
 
 		while(fgets(line, MAXLINE, fp) != NULL) {
@@ -61,15 +61,16 @@ int main(int argc, char *argv[]) {
 
 		exit(0);
 	} else {
-		close(fd[1]); /* close write end */	
+		/* child */
+		close(fd[1]); /* close write end */
 		if (fd[0] != STDIN_FILENO) {
 			if (dup2(fd[0], STDIN_FILENO) != STDIN_FILENO) {
-				fprintf(stderr, "dup2 error to stdin\n");	
+				fprintf(stderr, "dup2 error to stdin\n");
 				exit(1);
 			}
 			close(fd[0]);
 		}
-		/* get argumnets for execl */	
+		/* get argumnets for execl */
 		if ((pager = getenv("PAGER")) == NULL)
 			pager = DEF_PAGER;
 		if ((argv0 = strrchr(pager, '/')) != NULL)
@@ -78,9 +79,9 @@ int main(int argc, char *argv[]) {
 			argv0 = pager; /* no slash in pager */
 
 		if (execl(pager, argv0, (char *)0) < 0) {
-			fprintf(stderr, "execl error for %s\n", pager);	
+			fprintf(stderr, "execl error for %s\n", pager);
 		}
 	}
-	
+
 	exit(0);
 }
