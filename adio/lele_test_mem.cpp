@@ -43,7 +43,7 @@ int main(void) {
 	printf("shared memory attached from %lx to %lx\n",
 			(unsigned long)shmptr, (unsigned long)shmptr + SHM_SIZE);
 
-	pause(); //进程结束后，ipcs -m 查看共享内存不会消失，再次运行会得到不同的shmid的共享内存
+//	pause(); //进程结束后，ipcs -m 查看共享内存不会消失，再次运行会得到不同的shmid的共享内存
 
 	if (shmctl(shmid, IPC_RMID, 0) < 0) {
 		std::cerr << "shmctl error\n";
