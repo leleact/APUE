@@ -52,7 +52,7 @@ int main()
 static void sig_quit(int signo)
 {
 	printf("caught SIGQUIT\n");
-	if (signal(SIGQUIT, SIG_DFL) < SIG_ERR)
+	if (signal(SIGQUIT, SIG_DFL) == SIG_ERR)
 	{
 		fprintf(stderr, "can't reset SIGQUIT\n");
 		exit(1);
