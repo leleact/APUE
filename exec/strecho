@@ -1,0 +1,7 @@
+#!/bin/sh
+echo "hehe"
+while [ 1==1 ]
+do
+	sleep 10;
+	echo "hehe"
+done
