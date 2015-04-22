@@ -21,6 +21,7 @@ int main()
 		fprintf(stderr, "SIG_BLOCK error\n");
 		exit(1);
 	}
+	printf("SIGUIT blocked\n");	
 
 	sleep(5); // 此时^\信号发送到进程被屏蔽，进程会继续向下执行到结束
 
