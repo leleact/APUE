@@ -33,8 +33,6 @@ int main() {
 		exit(1);
 	}
 
-	sleep(100);
-
 	exit(0);
 }
 

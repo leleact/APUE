@@ -23,7 +23,7 @@ int main() {
 	int fd;
 
 	if ((fd = open(FILENAME, O_RDWR)) < 0) {
-		printf("%s is not exist!\n", FILENAME);	
+		fprintf(stderr, "%s is not exist!\n", FILENAME);	
 		exit(1);
 	}
 
@@ -33,7 +33,7 @@ int main() {
 		exit(1);
 	}
 
-	sleep(100);
+	sleep(100); // 等待另外一个进程
 
 	exit(0);
 }
